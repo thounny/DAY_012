@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("./h");
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Helvetica Neue";
+  background-color: #ebebeb;
+  color: #1a1a1a;
+}
+
+.img-logo {
+  height: 40px;
+  width: 40px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+p,
+a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+a {
+  font-weight: bold;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: black; /* Same color as text */
+  transition: width 0.3s ease-in-out;
+}
+
+a:hover::after {
+  width: 14%; /* Underline stops exactly at the end of the text */
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.counter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.counter p {
+  position: relative;
+  display: block;
+  transform: translateY(20px);
+}
+
+.hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 100vw;
+  height: 100vh;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  will-change: transform;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  z-index: 2;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5em;
+  display: flex;
+}
+
+.nav-col {
+  flex: 1;
+  display: flex;
+}
+
+.nav-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-col:nth-child(2) .nav-items:last-child p {
+  text-align: right;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  top: 10%;
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  z-index: 1;
+}
+
+.header h1 {
+  font-family: "Helvetica Neue";
+  font-size: 25vw;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 2vw;
+  line-height: 80%;
+}
+
+.hero-img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-img img {
+  transform: scale(1.5);
+}
+
+@media (max-width: 900px) {
+  .nav-col:nth-child(1) .nav-items:nth-child(2) p {
+    text-align: right;
+  }
+
+  .nav-col:nth-child(2) {
+    display: none;
+  }
+
+  .header {
+    top: 30%;
+  }
+
+  .header h1 {
+    font-size: 18vw;
+    padding-bottom: 4vw;
+  }
+
+  .hero-img {
+    height: 50vh;
+  }
+}
